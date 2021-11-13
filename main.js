@@ -21,7 +21,7 @@ function createTags(input){
     const tags =  input.split(',').filter(tag => tag.trim()!=='').map(tag => tag.trim())
 
     tagsEl.innerHTML = '';
-
+    // second part
     tags.forEach(tag => {
         const span = document.createElement('span');
         span.classList.add('tag');
