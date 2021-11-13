@@ -7,17 +7,17 @@ textarea.addEventListener('keyup', (key)=>{
     if (key.key === 'Enter'){
         setTimeout(()=>{
             key.target.value = '';
-            console.log (key.target);
+            randomizer();
         }, 10)
-
-        randomizer();
     }
         createTags(key.target.value);
-
 })
 
 function createTags(input){
-    // console.log (input);
+    console.log (input);
+    if (!input){
+        return
+    }
     const tags =  input.split(',').filter(tag => tag.trim()!=='').map(tag => tag.trim())
 
     tagsEl.innerHTML = '';
@@ -32,6 +32,21 @@ function createTags(input){
 
 function randomizer(){
     const spans = document.querySelectorAll('span');
-    console.log (123);
-
+    if (spans.length === 0)return;
+    let i = 0;
+    let random = 0;
+    const interval = setInterval(()=> {
+        removeHighlight(spans);
+        random = Math.floor(Math.random() * spans.length);
+        spans[random].classList.add('highlight')
+        i++
+        if (i > 19) clearInterval(interval);
+    }, 150)
 }
+
+function removeHighlight(spans){
+    spans.forEach(span=>{
+        span.classList.remove('highlight');
+    })
+}
+
