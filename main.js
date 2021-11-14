@@ -14,7 +14,6 @@ textarea.addEventListener('keyup', (key)=>{
 })
 
 function createTags(input){
-    console.log (input);
     if (!input){
         return
     }
